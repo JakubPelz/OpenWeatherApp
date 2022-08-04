@@ -1,7 +1,7 @@
-import './MainPage.scss';
-import React from 'react';
-import NavBar from '../components/navbar/NavBar';
-
+import "./MainPage.scss";
+import React from "react";
+import NavBar from "../components/navbar/NavBar";
+import WidgetForecast from "../components/widgetForecast/WidgetForecast";
 /* import { useCityContext } from "../components/context/CityContext";
 {city} <button onClick={() => setCity("Praha")}>Click me</button>
 const { city, setCity } = useCityContext(); */
@@ -12,7 +12,7 @@ const MainPage = () => {
             <div className="mainContainer">
                 <NavBar />
                 <div className="widgets">
-                    <div>Main Content</div>
+                    <WidgetForecast />
                 </div>
             </div>
         </div>
