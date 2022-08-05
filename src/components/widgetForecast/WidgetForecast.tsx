@@ -1,17 +1,19 @@
-import React from "react";
-import { useForecast } from "../context/ForecastContext";
-import moment from "moment";
-import { IForecastDaily } from "../interfaces/Forecast";
-import "./widgetForecast.scss";
+import React from 'react';
+import { useForecast } from '../context/ForecastContext';
+import moment from 'moment';
+import { IForecastDaily } from '../interfaces/Forecast';
+import './widgetForecast.scss';
 
 const WidgetForecast = () => {
     const forecast = useForecast();
+
+    const localMoment = moment.locale('cz');
     return (
         <>
             {forecast === null ? (
-                "Spojeni"
+                'Spojeni'
             ) : (
-                <>
+                <div className="widgets">
                     {forecast.daily.map((daily: IForecastDaily, i: number) => {
                         return (
                             <div key={i} className="widget">
@@ -28,8 +30,12 @@ const WidgetForecast = () => {
                                 </div>
                                 <div className="right">
                                     <span className="title">
-                                        {" "}
-                                        {moment(daily.dt * 1000).format("dddd")}
+                                        {' '}
+                                        {moment(daily.dt * 1000).format(
+                                            'dddd'
+                                        ) === 'Friday'
+                                            ? 'Dnes'
+                                            : 'potom'}
                                     </span>
                                     <div className="icon">
                                         <img
@@ -42,7 +48,7 @@ const WidgetForecast = () => {
                             </div>
                         );
                     })}
-                </>
+                </div>
             )}
         </>
     );
