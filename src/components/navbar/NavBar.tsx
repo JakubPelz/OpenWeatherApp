@@ -9,11 +9,10 @@ import PinDropIcon from "@mui/icons-material/PinDrop";
 
 import { useWeather } from "../context/WeatherContext";
 import Geolocation from "../geolocation/Geolocation";
+import moment from "moment";
 
 const NavBar = () => {
     const weather = useWeather();
-    const event = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
-
     return (
         <div className="navbar">
             <div className="wrapper">
@@ -42,9 +41,7 @@ const NavBar = () => {
                         </div>
                         <div className="item">
                             <QueryBuilderIcon className="icon" />
-                            {event.toLocaleString("en-GB", {
-                                timeZone: "UTC",
-                            })}
+                            {moment().format("DD-MM-YYYY hh:mm:ss")}
                         </div>
                     </div>
                 </div>

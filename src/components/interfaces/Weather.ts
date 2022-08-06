@@ -23,9 +23,10 @@ export default interface IWeather {
     };
     timezone: number;
     visibility: number;
-    weather: [{}];
+    weather: [{ desciption: string; icon: string; id: number; main: string }];
     wind: {
-        speed: number;
         deg: number;
+        gust: number;
+        speed: number;
     };
 }

@@ -1,9 +1,9 @@
-import './MainPage.scss';
-import React from 'react';
-import NavBar from '../components/navbar/NavBar';
-import WidgetForecast from '../components/widgetForecast/WidgetForecast';
-import Chart from '../components/chart/Chart';
-import FeatureChart from '../components/featureChart/FeatureCHart';
+import "./MainPage.scss";
+import React from "react";
+import NavBar from "../components/navbar/NavBar";
+import WidgetForecast from "../components/widgetForecast/WidgetForecast";
+import Chart from "../components/chart/Chart";
+import FeatureChart from "../components/featureChart/FeatureChart";
 
 const MainPage = () => {
     return (
@@ -12,7 +12,7 @@ const MainPage = () => {
                 <NavBar />
                 <WidgetForecast />
                 <div className="charts">
-                    <FeaturedChart />
+                    <FeatureChart />
                     <Chart />
                 </div>
             </div>
