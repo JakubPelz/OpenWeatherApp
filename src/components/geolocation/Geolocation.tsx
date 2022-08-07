@@ -57,7 +57,6 @@ const Geolocation = ({ CitiesData }: any) => {
         setCity(findCity);
         setFindCity("");
     }
-    console.log(findCity);
     return (
         <button onClick={functionFindLocation} className="button">
             Zjistit polohu

@@ -15,7 +15,6 @@
         }
     }
     .bottom {
-        padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -23,11 +22,11 @@
         gap: 15px;
 
         .featuredChart {
-            width: 100px;
-            height: 100px;
+            margin-top: -20px;
         }
 
         .title {
+            margin-top: -20px;
             font-weight: 500;
             color: gray;
         }
@@ -52,6 +51,8 @@
 
             .item {
                 text-align: center;
+                padding-left: 50px;
+                padding-right: 50px;
 
                 .itemTitle {
                     font-size: 14px;
@@ -59,18 +60,8 @@
                 }
 
                 .itemResult {
-                    display: flex;
-                    align-items: center;
-                    margin-top: 10px;
                     font-size: 14px;
-
-                    &.positive {
-                        color: green;
-                    }
-
-                    &.negative {
-                        color: red;
-                    }
+                    color: black;
                 }
             }
         }
