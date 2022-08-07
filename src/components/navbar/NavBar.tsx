@@ -24,7 +24,7 @@ const NavBar = () => {
 
                     <div className="item">
                         <PinDropIcon className="icon" />
-                        <Geolocation />
+                        <Geolocation CitiesData={CitiesData} />
                     </div>
                 </div>
                 <div className="items">

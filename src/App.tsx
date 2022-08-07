@@ -13,12 +13,11 @@ import IForecast from "./components/interfaces/Forecast";
 
 function App() {
     const [city, setCity] = useState<string>("Olomouc");
-    const [location, setLocation] = useState<any>({
-        longitude: 17.25,
-        latitude: 49.59,
-    });
+    const [location, setLocation] = useState<any>();
     const [weather, setWeather] = useState<IWeather | null>(null);
     const [forecast, setForecast] = useState<IForecast | null>(null);
+
+    console.log(city);
 
     useEffect(() => {
         setLocation({});
