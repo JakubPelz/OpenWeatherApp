@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./geolocation.scss";
-import { useLocationContext } from "../context/LocationContext";
+import React, { useEffect, useState } from 'react';
+import './geolocation.scss';
+import { useLocationContext } from '../context/LocationContext';
 
 export interface IGeolocation {
     latitude: number | null;
@@ -13,7 +13,7 @@ const Geolocation = () => {
     const [findLocation, setFindLocation] = useState<IGeolocation>({
         latitude: null,
         longitude: null,
-        error: "",
+        error: '',
     });
 
     const functionFindLocation = () => {
@@ -28,7 +28,7 @@ const Geolocation = () => {
     useEffect(() => {
         setLocation(findLocation);
     });
-    console.log(location);
+
     return (
         <button onClick={functionFindLocation} className="button">
             Zjistit polohu

@@ -3,11 +3,10 @@ import { useForecast } from '../context/ForecastContext';
 import moment from 'moment';
 import { IForecastDaily } from '../interfaces/Forecast';
 import './widgetForecast.scss';
+import DaysToCz from '../daysToCz/DaysToCz';
 
 const WidgetForecast = () => {
     const forecast = useForecast();
-
-    const localMoment = moment.locale('cz');
     return (
         <>
             {forecast === null ? (
@@ -30,12 +29,7 @@ const WidgetForecast = () => {
                                 </div>
                                 <div className="right">
                                     <span className="title">
-                                        {' '}
-                                        {moment(daily.dt * 1000).format(
-                                            'dddd'
-                                        ) === 'Friday'
-                                            ? 'Dnes'
-                                            : 'potom'}
+                                        <DaysToCz />
                                     </span>
                                     <div className="icon">
                                         <img
