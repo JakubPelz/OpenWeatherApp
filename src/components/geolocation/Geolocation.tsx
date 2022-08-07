@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './geolocation.scss';
-import { useLocationContext } from '../context/LocationContext';
+import React, { useEffect, useState } from "react";
+import "./geolocation.scss";
+import { useLocationContext } from "../context/LocationContext";
 
 export interface IGeolocation {
     latitude: number | null;
@@ -9,11 +9,11 @@ export interface IGeolocation {
 }
 
 const Geolocation = () => {
-    const { location, setLocation } = useLocationContext();
+    const { setLocation } = useLocationContext();
     const [findLocation, setFindLocation] = useState<IGeolocation>({
         latitude: null,
         longitude: null,
-        error: '',
+        error: "",
     });
 
     const functionFindLocation = () => {

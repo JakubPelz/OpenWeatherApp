@@ -1,14 +1,15 @@
-import './navbar.scss';
-import React from 'react';
-import LanguageIcon from '@mui/icons-material/Language';
-import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
-import PinDropIcon from '@mui/icons-material/PinDrop';
+import "./navbar.scss";
+import React, { useState } from "react";
+import LanguageIcon from "@mui/icons-material/Language";
+import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import PinDropIcon from "@mui/icons-material/PinDrop";
 
-import { useWeather } from '../context/WeatherContext';
-import Geolocation from '../geolocation/Geolocation';
-import Search from '../search/Search';
-import moment from 'moment';
+import { useWeather } from "../context/WeatherContext";
+import Geolocation from "../geolocation/Geolocation";
+import Search from "../search/Search";
+import moment from "moment";
+import CitiesData from "../../utils/city.list.json";
 
 const NavBar = () => {
     const weather = useWeather();
@@ -19,7 +20,7 @@ const NavBar = () => {
                     <span className="logo">OpenWeatherApi APP</span>
                 </div>
                 <div className="items">
-                    <Search />
+                    <Search CitiesData={CitiesData} />
 
                     <div className="item">
                         <PinDropIcon className="icon" />
@@ -38,7 +39,7 @@ const NavBar = () => {
                         </div>
                         <div className="item">
                             <QueryBuilderIcon className="icon" />
-                            {moment().format('DD-MM-YYYY hh:mm:ss')}
+                            {moment().format("DD-MM-YYYY hh:mm:ss")}
                         </div>
                     </div>
                 </div>

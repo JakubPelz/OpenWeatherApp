@@ -20,8 +20,12 @@ function App() {
     const [weather, setWeather] = useState<IWeather | null>(null);
     const [forecast, setForecast] = useState<IForecast | null>(null);
 
-    let longtitude = 17.25;
-    let latitude = 49.59;
+    useEffect(() => {
+        setLocation({});
+    }, []);
+
+    let longtitude = weather === null ? 17.25 : weather.coord.lon;
+    let latitude = weather === null ? 49.59 : weather.coord.lat;
 
     useEffect(() => {
         ApiClient.getWeather(`${city}`)

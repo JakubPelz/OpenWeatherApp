@@ -1,52 +1,91 @@
-import React, { useState, useEffect } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import CitiesData from '../../utils/state.capitals.json';
+import React, { useState, useEffect } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import { useCityContext } from "../context/CityContext";
+import "./search.scss";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 export interface ICity {
-    abbr: string;
-    capital: string;
-    lat: string;
-    long: string;
+    id: number;
     name: string;
+    state: string;
+    country: string;
+    coord: { lon: number; lat: number };
 }
 
-interface ICities extends Array<ICity> {}
+export interface ICitiesData {
+    CitiesData: ICity[];
+}
 
-const Search = () => {
-    const [searchCity, setSearchCity] = useState<ICities>();
-    const [wordEntered, setWordEntered] = useState<string>('');
+const Search = ({ CitiesData }: any) => {
+    const [allCities, setAllCities] = useState<any>();
+    const [filtredData, setFiltredData] = useState<any>();
+    const [searchCity, setSearchCity] = useState("Vyhledejte město");
+    const { city, setCity } = useCityContext();
 
     useEffect(() => {
-        setSearchCity(CitiesData);
+        setAllCities(CitiesData);
     });
 
-    /*     const handleFilter = (event: any) => {
-        const searchWord = event.target.value;
-        setWordEntered(searchWord);
-        const newFilter = data.filter((value: any) => {
-            return value.name.toLowerCase().includes(searchWord.toLowerCase());
+    const handleFilter = (event: any) => {
+        const searchValue = event.target.value;
+        setSearchCity(searchValue);
+        const newFilter = allCities.filter((value: any) => {
+            return value.name.toLowerCase().includes(searchCity.toLowerCase());
         });
-        if (searchWord === '') {
+        if (newFilter === "") {
             setFiltredData([]);
         } else {
             setFiltredData(newFilter);
-            setWordEntered(searchWord);
         }
     };
 
-    const onSubmit = (event) => {
-        event.preventDefault();
-        dispatch(getWeather(wordEntered));
+    const onSubmit = () => {
+        if (filtredData.length >= 1) {
+            setCity(filtredData[0].name);
+        } else setCity(filtredData.name);
     };
 
-    const clearInput = () => {
-        setFiltredData([]);
-        setWordEntered('');
-    }; */
+    const onSubmitWhisperer = (data: string) => {
+        setCity(data);
+        onClear();
+    };
+
+    const onClear = () => {
+        setFiltredData(undefined);
+        setSearchCity("Vyhledejte město");
+    };
+
     return (
         <div className="item search">
-            <input type="text" placeholder="Vyhledej město" />
-            <SearchIcon />
+            <input
+                type="text"
+                placeholder={searchCity}
+                onChange={handleFilter}
+            />
+            {filtredData === undefined ? (
+                <SearchIcon onClick={onSubmit} className="searchIcon" />
+            ) : (
+                <HighlightOffIcon onClick={onClear} className="searchIcon" />
+            )}
+            {filtredData === undefined ? (
+                <></>
+            ) : (
+                <div className="dataResult">
+                    {filtredData.slice(0, 15).map((value: any, key: any) => {
+                        return (
+                            <p
+                                className="dataItem"
+                                key={key}
+                                onClick={() => {
+                                    onSubmitWhisperer(value.name);
+                                }}
+                            >
+                                {value.name}
+                            </p>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     );
 };
