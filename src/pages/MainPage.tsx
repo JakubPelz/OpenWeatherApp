@@ -8,6 +8,7 @@ import ComparePlaces from "../components/comparePlaces/ComparePlaces";
 import Footer from "../components/footer/Footer";
 import "../components/style/dark.scss";
 import { useDarkModeContext } from "../components/context/darkModeContext";
+import TableData from "../components/tableData/TableData";
 
 const MainPage = () => {
     const { darkMode } = useDarkModeContext();
@@ -25,6 +26,7 @@ const MainPage = () => {
                         Porovnejte teploty mezi dvěma místy
                     </div>
                     <ComparePlaces />
+                    <TableData />
                 </div>
                 <div className="footer">
                     <Footer />
