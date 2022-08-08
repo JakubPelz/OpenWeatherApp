@@ -1,19 +1,18 @@
-import React from "react";
+import React from 'react';
 
 interface ILines {
-    data: any;
+    data: { evePlaceOne?: number; evePlaceTwo: number; name: string };
 }
 
-const Lines = ({ data }: ILines) => {
-    console.log(data);
+const Lines = (data: ILines) => {
     return (
         <tr>
-            <td>{data?.name}</td>
+            <td>{}</td>
             <td>
-                <i className="fa fa-remove">18</i>
+                <i className="fa fa-remove">{}</i>
             </td>
             <td>
-                <i className="fa fa-check">29</i>
+                <i className="fa fa-check">{}</i>
             </td>
         </tr>
     );

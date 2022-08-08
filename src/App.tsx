@@ -1,19 +1,19 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { Routes, Route } from "react-router-dom";
-import { WeatherContext } from "./components/context/WeatherContext";
-import { ForecastContext } from "./components/context/ForecastContext";
-import { getCityContext } from "./components/context/CityContext";
-import { getDarkModeContext } from "./components/context/darkModeContext";
-import { WeatherContext2 } from "./components/context/WeatherContext2";
-import { ForecastContext2 } from "./components/context/ForecastContext2";
-import routes from "./components/routes/Routes";
-import ApiClient from "./api/ApiClient";
-import IRoute from "./components/interfaces/Routes";
-import IWeather from "./components/interfaces/Weather";
-import IForecast from "./components/interfaces/Forecast";
+import React, { useEffect, useState, useCallback } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { WeatherContext } from './components/context/WeatherContext';
+import { ForecastContext } from './components/context/ForecastContext';
+import { getCityContext } from './components/context/CityContext';
+import { getDarkModeContext } from './components/context/darkModeContext';
+import { WeatherContext2 } from './components/context/WeatherContext2';
+import { ForecastContext2 } from './components/context/ForecastContext2';
+import routes from './components/routes/Routes';
+import ApiClient from './api/ApiClient';
+import IRoute from './components/interfaces/Routes';
+import IWeather from './components/interfaces/Weather';
+import IForecast from './components/interfaces/Forecast';
 
 function App() {
-    const [city, setCity] = useState<string>("Olomouc");
+    const [city, setCity] = useState<string>('Olomouc');
     const [weather, setWeather] = useState<IWeather | null>(null);
     const [forecast, setForecast] = useState<IForecast | null>(null);
     const [darkMode, setDarkMode] = useState<boolean>(false);
