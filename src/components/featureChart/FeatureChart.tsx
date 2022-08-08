@@ -34,7 +34,7 @@ const FeaturedChart = () => {
                         <p className="amount">
                             {day.daily[0].temp.eve} &#176;C
                         </p>
-                        <p className="summary">
+                        <div className="summary">
                             <div className="item">
                                 <div className="itemTitle">
                                     Ranní teplota:{" "}
@@ -59,7 +59,7 @@ const FeaturedChart = () => {
                                     </div>
                                 </div>
                             </div>
-                        </p>
+                        </div>
                         <div className="summary">
                             <div className="item">
                                 <div className="itemTitle">

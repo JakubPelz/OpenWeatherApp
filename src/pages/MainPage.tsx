@@ -11,7 +11,6 @@ import { useDarkModeContext } from "../components/context/darkModeContext";
 
 const MainPage = () => {
     const { darkMode } = useDarkModeContext();
-    console.log(darkMode);
     return (
         <div className={darkMode === false ? "mainPage" : "mainPage dark"}>
             <div className="mainContainer">

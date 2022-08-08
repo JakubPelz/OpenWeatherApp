@@ -7,7 +7,7 @@ const Footer = () => {
 
     return (
         <div className="footerBar">
-            Nelíbí se vám tato barva pozadí? Změnte si ho :)
+            <div>Nelíbí se vám tato barva pozadí? Změnte si ho :)</div>
             <div className="bottom">
                 <div
                     className="colorOption"

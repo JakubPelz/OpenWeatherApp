@@ -1,23 +1,39 @@
 import React, { useState } from "react";
 import "./comparePlaces.scss";
-import { useForecast } from "../context/ForecastContext";
-import { useCityContext } from "../context/CityContext";
-import Search from "../search/Search";
+import LanguageIcon from "@mui/icons-material/Language";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import { useWeather } from "../context/WeatherContext";
+import Search from "./compareComponents/secondSearch/Search";
 import CitiesData from "../../utils/city.list.json";
-import SearchIcon from "@mui/icons-material/Search";
 
 const ComparePlaces = () => {
-    const { city, setCity } = useCityContext();
+    const weather = useWeather();
     return (
-        <div className="">
-            <div>Vychozi lokalita: {city}</div>
-            <div className="">
-                Najdete lokalitu pro porovnani:{" "}
-                <div className="item search">
-                    <input />
-                    <SearchIcon />
+        <div className="navbarPlaces">
+            <div className="findWrapper" style={{ height: "35px" }}>
+                <div>
+                    <span className="mainCity">
+                        Výchozí hodnota pro srovnání
+                    </span>
+                </div>
+                <div className="items">
+                    <div className="item"></div>
+                </div>
+                <div className="items">
+                    <div className="item">
+                        <div className="item">
+                            <MyLocationIcon className="icon" />
+                            {weather?.name}
+                        </div>
+                        <div className="item">
+                            <LanguageIcon className="icon" />
+                            {weather?.sys.country}
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <Search CitiesData={CitiesData} />
         </div>
     );
 };

@@ -38,4 +38,13 @@
             }
         }
     }
+
+    .item search {
+        color: aliceblue;
+    }
+
+    .dataItem:hover {
+        cursor: pointer;
+        background-color: rgb(126, 125, 125);
+    }
 }
