@@ -1,0 +1,41 @@
+.mainPage.dark {
+    background-color: #222;
+    color: rgb(156, 156, 156);
+
+    .chartGrid {
+        stroke: rgba(228, 228, 228, 0.219);
+    }
+
+    .widgets,
+    .charts,
+    .footer,
+    .navBar,
+    .listContainer {
+        color: aliceblue;
+    }
+
+    .logo {
+        color: rgb(99, 0, 129);
+    }
+
+    .item {
+        color: aliceblue;
+    }
+
+    .summary {
+        .item {
+            padding: 5px;
+            .itemTitle {
+                font-weight: bold;
+                font-size: 14px;
+                color: rgb(99, 0, 129);
+            }
+
+            .itemResult {
+                padding-top: 5px;
+                font-size: 14px;
+                color: white;
+            }
+        }
+    }
+}

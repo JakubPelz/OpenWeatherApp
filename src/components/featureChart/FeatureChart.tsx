@@ -1,12 +1,10 @@
 import "./featureChart.scss";
 import React from "react";
 import { useForecast } from "../context/ForecastContext";
-import moment from "moment";
 import DayToCz from "../dayToCz/DayToCz";
 
 const FeaturedChart = () => {
     const day: any = useForecast();
-    console.log(day);
     return (
         <div className="featured">
             {day === null ? (

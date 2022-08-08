@@ -31,7 +31,7 @@ const Chart = () => {
             <div className="title">Grafická předpověď na další dny</div>
             <div className="chartContainer">
                 <AreaChart
-                    width={800}
+                    width={1000}
                     height={350}
                     data={data}
                     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}

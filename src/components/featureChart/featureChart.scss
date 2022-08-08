@@ -51,8 +51,6 @@
 
             .item {
                 text-align: center;
-                padding-left: 50px;
-                padding-right: 50px;
 
                 .itemTitle {
                     font-size: 14px;
@@ -62,6 +60,8 @@
                 .itemResult {
                     font-size: 14px;
                     color: black;
+                    padding-left: 50px;
+                    padding-right: 50px;
                 }
             }
         }
