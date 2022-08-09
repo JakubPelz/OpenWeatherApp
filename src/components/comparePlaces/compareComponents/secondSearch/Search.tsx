@@ -76,7 +76,7 @@ const Search = ({ CitiesData }: any) => {
     return (
         <div className="findWrapper">
             <div>
-                <span className="mainCity">Výchozí hodnota pro srovnání</span>
+                <span className="mainCity">Srovnávané místo</span>
             </div>
             <div className="search">
                 <input

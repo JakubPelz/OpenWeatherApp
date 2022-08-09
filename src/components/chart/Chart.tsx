@@ -1,5 +1,5 @@
-import "./chart.scss";
-import React from "react";
+import './chart.scss';
+import React from 'react';
 import {
     AreaChart,
     Area,
@@ -7,10 +7,10 @@ import {
     YAxis,
     CartesianGrid,
     Tooltip,
-} from "recharts";
-import moment from "moment";
+} from 'recharts';
+import moment from 'moment';
 
-import { useForecast } from "../context/ForecastContext";
+import { useForecast } from '../context/ForecastContext';
 
 const Chart = () => {
     const weatherData: any = useForecast();
@@ -20,7 +20,7 @@ const Chart = () => {
     if (weatherData !== null) {
         weatherData.daily.forEach((element: any) => {
             data.push({
-                name: moment(element.dt * 1000).format("dddd"),
+                name: moment(element.dt * 1000).format('dddd'),
                 total: element.temp.day,
             });
         });
@@ -31,7 +31,7 @@ const Chart = () => {
             <div className="title">Grafická předpověď na další dny</div>
             <div className="chartContainer">
                 <AreaChart
-                    width={1000}
+                    width={780}
                     height={350}
                     data={data}
                     margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
