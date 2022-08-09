@@ -1,18 +1,38 @@
-import React from 'react';
+import React from "react";
 
 interface ILines {
-    data: { evePlaceOne?: number; evePlaceTwo: number; name: string };
+    data: {
+        dataPlaceOne: number;
+        dataPlaceTwo: number;
+        name: string;
+    };
 }
 
-const Lines = (data: ILines) => {
+const Lines = ({ data }: ILines) => {
     return (
         <tr>
-            <td>{}</td>
+            <td>{data?.name}</td>
             <td>
-                <i className="fa fa-remove">{}</i>
+                <i
+                    className={`fa ${
+                        data?.dataPlaceOne < data?.dataPlaceTwo
+                            ? "fa-remove"
+                            : ""
+                    }`}
+                >
+                    {data?.dataPlaceOne} &#176;C
+                </i>
             </td>
             <td>
-                <i className="fa fa-check">{}</i>
+                <i
+                    className={`fa ${
+                        data?.dataPlaceOne > data?.dataPlaceTwo
+                            ? "fa-remove"
+                            : ""
+                    }`}
+                >
+                    {data?.dataPlaceTwo} &#176;C
+                </i>
             </td>
         </tr>
     );

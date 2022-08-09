@@ -20,11 +20,11 @@ const Search = ({ CitiesData }: any) => {
     const [allCities, setAllCities] = useState<any>();
     const [filtredData, setFiltredData] = useState<any>();
     const [searchCity, setSearchCity] = useState("Vyhledejte město");
-    const { city, setCity } = useCityContext();
+    const { setCity } = useCityContext();
 
     useEffect(() => {
         setAllCities(CitiesData);
-    });
+    }, [CitiesData]);
 
     const handleFilter = (event: any) => {
         const searchValue = event.target.value;
