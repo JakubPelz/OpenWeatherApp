@@ -1,5 +1,5 @@
-import React from "react";
-import moment from "moment";
+import React from 'react';
+import moment from 'moment';
 
 interface ILines {
     data: {
@@ -11,26 +11,19 @@ interface ILines {
 }
 
 const Lines = ({ data }: ILines) => {
-    if (data?.value === "time") {
-        let today = Date.now();
-        let getTime = new Date(data.dataPlaceOne * 1000);
-
-        console.log(getTime);
-    }
-
     const today = () => {
         switch (data?.value) {
-            case "time":
-                return "hod";
+            case 'time':
+                return 'hod';
 
-            case "%":
-                return "%";
+            case '%':
+                return '%';
 
-            case "temperature":
+            case 'temperature':
                 return <>&#176;C</>;
 
-            case "km":
-                return "hm/h";
+            case 'km':
+                return 'hm/h';
         }
     };
     return (
@@ -40,26 +33,35 @@ const Lines = ({ data }: ILines) => {
                 <i
                     className={`fa ${
                         data?.dataPlaceOne < data?.dataPlaceTwo
-                            ? "fa-remove"
-                            : ""
+                            ? 'fa-remove'
+                            : ''
                     }`}
                 >
-                    {data?.dataPlaceOne} &#176;C
+                    {data?.value === 'time' ? (
+                        <>
+                            {moment(data.dataPlaceOne * 1000).format('h:mm:ss')}
+                        </>
+                    ) : (
+                        <>{data?.dataPlaceOne}</>
+                    )}{' '}
+                    {today()}
                 </i>
             </td>
             <td>
                 <i
                     className={`fa ${
                         data?.dataPlaceOne > data?.dataPlaceTwo
-                            ? "fa-remove"
-                            : ""
+                            ? 'fa-remove'
+                            : ''
                     }`}
                 >
-                    {data?.value === "time" ? (
-                        <>{}</>
+                    {data?.value === 'time' ? (
+                        <>
+                            {moment(data.dataPlaceTwo * 1000).format('h:mm:ss')}
+                        </>
                     ) : (
                         <>{data?.dataPlaceTwo}</>
-                    )}{" "}
+                    )}{' '}
                     {today()}
                 </i>
             </td>
