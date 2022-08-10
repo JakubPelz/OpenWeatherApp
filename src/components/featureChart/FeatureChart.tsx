@@ -39,7 +39,7 @@ const FeaturedChart = () => {
                                 <div className="itemTitle">
                                     Ranní teplota:{" "}
                                     <div className="itemResult">
-                                        {day.daily[0].temp.morn} &#176;C %
+                                        {day.daily[0].temp.morn} &#176;C
                                     </div>
                                 </div>
                             </div>

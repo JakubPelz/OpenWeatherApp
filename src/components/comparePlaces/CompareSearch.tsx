@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import LanguageIcon from '@mui/icons-material/Language';
-import MyLocationIcon from '@mui/icons-material/MyLocation';
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { useWeather2 } from '../../../context/WeatherContext2';
-import ApiClient from '../../../../api/ApiClient';
-import { useForecast2 } from '../../../context/ForecastContext2';
+import React, { useState, useEffect, useCallback } from "react";
+import SearchIcon from "@mui/icons-material/Search";
+import LanguageIcon from "@mui/icons-material/Language";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { useWeather2 } from "../context/WeatherContext2";
+import ApiClient from "../../api/ApiClient";
+import { useForecast2 } from "../context/ForecastContext2";
 
 const Search = ({ CitiesData }: any) => {
     const [allCities, setAllCities] = useState<any>();
     const [filtredData, setFiltredData] = useState<any>();
-    const [searchCity, setSearchCity] = useState('Vyhledejte město');
-    const [findCity, setFindCity] = useState<string>('Praha');
+    const [searchCity, setSearchCity] = useState("Vyhledejte město");
+    const [findCity, setFindCity] = useState<string>("Praha");
     const { weather2, setWeather2 } = useWeather2();
     const { setForecast2 } = useForecast2();
 
@@ -48,7 +48,7 @@ const Search = ({ CitiesData }: any) => {
         const newFilter = allCities.filter((value: any) => {
             return value.name.toLowerCase().includes(searchCity.toLowerCase());
         });
-        if (newFilter === '') {
+        if (newFilter === "") {
             setFiltredData([]);
         } else {
             setFiltredData(newFilter);
@@ -70,7 +70,7 @@ const Search = ({ CitiesData }: any) => {
 
     const onClear = () => {
         setFiltredData(undefined);
-        setSearchCity('Vyhledejte město');
+        setSearchCity("Vyhledejte město");
     };
 
     return (

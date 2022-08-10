@@ -47,4 +47,39 @@
         cursor: pointer;
         background-color: rgb(126, 125, 125);
     }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        width: 100%;
+        border: 1px solid rgb(255, 255, 255);
+        thead,
+        tbody {
+            th,
+            td {
+                text-align: center;
+                padding: 16px;
+                border: 1px solid rgb(255, 255, 255);
+            }
+            th:first-child,
+            td:first-child {
+                text-align: left;
+            }
+
+            tr:nth-child(even) {
+                background-color: rgb(126, 125, 125);
+            }
+            .fa {
+                color: green;
+            }
+
+            .fa-remove {
+                color: red;
+            }
+        }
+    }
+
+    .menu {
+        color: white;
+    }
 }

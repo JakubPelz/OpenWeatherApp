@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import './tableData.scss';
-import Lines from './tableComponents/Lines';
-import { useForecast } from '../context/ForecastContext';
-import { useForecast2 } from '../context/ForecastContext2';
-import { useWeather } from '../context/WeatherContext';
-import { useWeather2 } from '../context/WeatherContext2';
-import DayToCz from '../dayToCz/DayToCz';
-import moment from 'moment';
+import React, { useEffect, useState } from "react";
+import "./tableData.scss";
+import Lines from "./tableComponents/Lines";
+import { useForecast } from "../context/ForecastContext";
+import { useForecast2 } from "../context/ForecastContext2";
+import { useWeather } from "../context/WeatherContext";
+import { useWeather2 } from "../context/WeatherContext2";
+import DayToCz from "../dayToCz/DayToCz";
+import moment from "moment";
 
 const TableData = () => {
     const mainWeather = useWeather();
@@ -33,7 +33,7 @@ const TableData = () => {
             <table>
                 <thead>
                     <tr>
-                        <th style={{ width: '50%' }}>Porovnávaná hodnota</th>
+                        <th style={{ width: "50%" }}>Porovnávaná hodnota</th>
                         <th>{mainWeather?.name}</th>
                         <th>{weather2?.name}</th>
                     </tr>
@@ -41,23 +41,58 @@ const TableData = () => {
                 <tbody>
                     <Lines
                         data={{
-                            name: 'Průměrná denní teplota',
+                            name: "Průměrná denní teplota",
                             dataPlaceOne: mainForecast?.daily[idDay].temp.eve,
                             dataPlaceTwo: forecast2?.daily[idDay].temp.eve,
+                            value: "temperature",
                         }}
                     />
                     <Lines
                         data={{
-                            name: 'Denní maximum',
+                            name: "Denní maximum",
                             dataPlaceOne: mainForecast?.daily[idDay].temp.max,
                             dataPlaceTwo: forecast2?.daily[idDay].temp.max,
+                            value: "temperature",
                         }}
                     />
                     <Lines
                         data={{
-                            name: 'Denní minimum',
+                            name: "Denní minimum",
                             dataPlaceOne: mainForecast?.daily[idDay].temp.min,
                             dataPlaceTwo: forecast2?.daily[idDay].temp.min,
+                            value: "temperature",
+                        }}
+                    />
+                    <Lines
+                        data={{
+                            name: "Vlhkost vyzduchu",
+                            dataPlaceOne: mainForecast?.daily[idDay].humidity,
+                            dataPlaceTwo: forecast2?.daily[idDay].humidity,
+                            value: "%",
+                        }}
+                    />
+                    <Lines
+                        data={{
+                            name: "Rychlost větru",
+                            dataPlaceOne: mainForecast?.daily[idDay].wind_speed,
+                            dataPlaceTwo: forecast2?.daily[idDay].wind_speed,
+                            value: "km",
+                        }}
+                    />
+                    <Lines
+                        data={{
+                            name: "Východ slunce",
+                            dataPlaceOne: mainForecast?.daily[idDay].moonrise,
+                            dataPlaceTwo: forecast2?.daily[idDay].moonrise,
+                            value: "time",
+                        }}
+                    />
+                    <Lines
+                        data={{
+                            name: "Západ slunce",
+                            dataPlaceOne: mainForecast?.daily[idDay].moonset,
+                            dataPlaceTwo: forecast2?.daily[idDay].moonset,
+                            value: "time",
                         }}
                     />
                 </tbody>
