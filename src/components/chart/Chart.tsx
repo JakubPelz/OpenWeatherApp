@@ -22,9 +22,10 @@ const Chart = () => {
     const forecast = useForecast();
     const weather = useWeather();
     const { weather2 } = useWeather2();
-    const [grafActive, setGrafActive] = useState<any>({});
+    const [grafActive, setGrafActive] = useState<boolean>();
+    const [grafActive2, setGrafActive2] = useState<boolean>();
 
-    console.log(grafActive);
+    console.log(grafActive2);
     let data: any = [];
     let data2: any = [];
 
@@ -47,8 +48,20 @@ const Chart = () => {
         Object.assign({}, item, data2[i])
     );
 
-    const onSet = (data: any) => {
-        setGrafActive(data);
+    const onSet = () => {
+        if (grafActive === true) {
+            setGrafActive(false);
+        } else {
+            setGrafActive(true);
+        }
+    };
+
+    const onSet2 = () => {
+        if (grafActive2 === true) {
+            setGrafActive2(false);
+        } else {
+            setGrafActive2(true);
+        }
     };
 
     return (
@@ -57,10 +70,10 @@ const Chart = () => {
                 <div className="title">Grafická předpověď na další dny</div>
 
                 <div className="groupButton">
-                    <div onClick={() => onSet(weather?.name)}>
+                    <div onClick={() => onSet()}>
                         <Button name={weather?.name} />
                     </div>
-                    <div onClick={() => onSet(weather2?.name)}>
+                    <div onClick={() => onSet2()}>
                         <Button name={weather2?.name} />
                     </div>
                 </div>
