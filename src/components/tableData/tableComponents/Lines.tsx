@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import 'moment/locale/cs';
 
 interface ILines {
     data: {
@@ -38,9 +39,7 @@ const Lines = ({ data }: ILines) => {
                     }`}
                 >
                     {data?.value === 'time' ? (
-                        <>
-                            {moment(data.dataPlaceOne * 1000).format('h:mm:ss')}
-                        </>
+                        <>{moment(data.dataPlaceOne * 1000).format('LTS')}</>
                     ) : (
                         <>{data?.dataPlaceOne}</>
                     )}{' '}
@@ -56,9 +55,7 @@ const Lines = ({ data }: ILines) => {
                     }`}
                 >
                     {data?.value === 'time' ? (
-                        <>
-                            {moment(data.dataPlaceTwo * 1000).format('h:mm:ss')}
-                        </>
+                        <>{moment(data.dataPlaceTwo * 1000).format('LTS')}</>
                     ) : (
                         <>{data?.dataPlaceTwo}</>
                     )}{' '}

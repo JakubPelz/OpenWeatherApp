@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import "./button.scss";
+import React, { useState } from 'react';
+import './button.scss';
 
 interface IButton {
     name: string | undefined;
 }
 
 const Button = ({ name }: IButton) => {
-    const [isActive, setIsActive] = useState<boolean>(false);
+    const [isActive, setIsActive] = useState<boolean>(true);
 
     const onClick = () => {
         if (isActive === false) {
@@ -17,7 +17,7 @@ const Button = ({ name }: IButton) => {
     };
 
     return (
-        <button className={isActive ? "active" : ""} onClick={() => onClick()}>
+        <button className={isActive ? 'active' : ''} onClick={() => onClick()}>
             {name}
         </button>
     );
