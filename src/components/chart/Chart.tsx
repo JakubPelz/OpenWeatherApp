@@ -1,77 +1,100 @@
 import "./chart.scss";
-import React from "react";
+import React, { useState } from "react";
 import {
-    AreaChart,
-    Area,
+    LineChart,
+    Line,
     XAxis,
     YAxis,
     CartesianGrid,
     Tooltip,
+    Legend,
 } from "recharts";
 import moment from "moment";
+import Button from "../buttons/Button";
 
 import { useForecast } from "../context/ForecastContext";
+import { useForecast2 } from "../context/ForecastContext2";
+import { useWeather } from "../context/WeatherContext";
+import { useWeather2 } from "../context/WeatherContext2";
 
 const Chart = () => {
-    const weatherData: any = useForecast();
+    const { forecast2 } = useForecast2();
+    const forecast = useForecast();
+    const weather = useWeather();
+    const { weather2 } = useWeather2();
+    const [grafActive, setGrafActive] = useState<any>({});
 
+    console.log(grafActive);
     let data: any = [];
+    let data2: any = [];
 
-    if (weatherData !== null) {
-        weatherData.daily.forEach((element: any) => {
+    if (forecast !== null) {
+        forecast.daily.forEach((element: any) => {
             data.push({
-                name: moment(element.dt * 1000).format("dddd"),
-                total: element.temp.day,
+                Date: moment(element.dt * 1000).format("L"),
+                Hlavní_Město: element.temp.day,
             });
         });
     }
 
+    if (forecast2 !== null) {
+        forecast2.daily.forEach((element: any) => {
+            data2.push({ Srovnávané_Město: element.temp.day });
+        });
+    }
+
+    let merged = data.map((item: any, i: number) =>
+        Object.assign({}, item, data2[i])
+    );
+
+    const onSet = (data: any) => {
+        setGrafActive(data);
+    };
+
     return (
         <div className="chart">
-            <div className="title">Grafická předpověď na další dny</div>
+            <span className="topNav">
+                <div className="title">Grafická předpověď na další dny</div>
+
+                <div className="groupButton">
+                    <div onClick={() => onSet(weather?.name)}>
+                        <Button name={weather?.name} />
+                    </div>
+                    <div onClick={() => onSet(weather2?.name)}>
+                        <Button name={weather2?.name} />
+                    </div>
+                </div>
+            </span>
             <div className="chartContainer">
                 <div className="chartContainerCenter">
-                    <AreaChart
+                    <LineChart
                         width={780}
                         height={350}
-                        data={data}
-                        margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+                        data={merged}
+                        margin={{
+                            top: 5,
+                            right: 30,
+                            left: 20,
+                            bottom: 5,
+                        }}
                     >
-                        <defs>
-                            <linearGradient
-                                id="Total"
-                                x1="0"
-                                y1="0"
-                                x2="0"
-                                y2="1"
-                            >
-                                <stop
-                                    offset="5%"
-                                    stopColor="#8884d8"
-                                    stopOpacity={0.8}
-                                />
-                                <stop
-                                    offset="95%"
-                                    stopColor="#8884d8"
-                                    stopOpacity={0}
-                                />
-                            </linearGradient>
-                        </defs>
-                        <XAxis dataKey="name" />
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="Date" />
                         <YAxis />
-                        <CartesianGrid
-                            strokeDasharray="3 3"
-                            className="chartGrid"
-                        />
                         <Tooltip />
-                        <Area
+                        <Legend />
+                        <Line
                             type="monotone"
-                            dataKey="total"
+                            dataKey="Hlavní_Město"
                             stroke="#8884d8"
-                            fillOpacity={1}
-                            fill="url(#Total)"
+                            activeDot={{ r: 8 }}
                         />
-                    </AreaChart>
+                        <Line
+                            type="monotone"
+                            dataKey="Srovnávané_Město"
+                            stroke="#82ca9d"
+                        />
+                    </LineChart>
                 </div>
             </div>
         </div>
