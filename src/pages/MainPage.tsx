@@ -7,7 +7,7 @@ import FeatureChart from "../components/featureChart/FeatureChart";
 import ComparePlaces from "../components/comparePlaces/ComparePlaces";
 import Footer from "../components/footer/Footer";
 import "../components/style/dark.scss";
-import { useDarkModeContext } from "../components/context/darkModeContext";
+import { useDarkModeContext } from "../components/context/DarkModeContext";
 import TableData from "../components/tableData/TableData";
 
 const MainPage = () => {

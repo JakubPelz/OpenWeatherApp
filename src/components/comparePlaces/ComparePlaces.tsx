@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import "./comparePlaces.scss";
 import LanguageIcon from "@mui/icons-material/Language";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
-import { useWeather } from "../context/WeatherContext";
+import { useWeather } from "../context/DataContext";
 import CompareSearch from "./CompareSearch";
 import CitiesData from "../../utils/city.list.json";
 
 const ComparePlaces = () => {
-    const weather = useWeather();
+    const { weather } = useWeather();
     return (
         <div className="navbarPlaces">
             <div className="findWrapper" style={{ height: "35px" }}>

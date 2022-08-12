@@ -1,5 +1,5 @@
-import './chart.scss';
-import React, { useState } from 'react';
+import "./chart.scss";
+import React, { useState } from "react";
 import {
     LineChart,
     Line,
@@ -8,19 +8,21 @@ import {
     CartesianGrid,
     Tooltip,
     Legend,
-} from 'recharts';
-import moment from 'moment';
-import Button from '../buttons/Button';
-
-import { useForecast } from '../context/ForecastContext';
-import { useForecast2 } from '../context/ForecastContext2';
-import { useWeather } from '../context/WeatherContext';
-import { useWeather2 } from '../context/WeatherContext2';
+} from "recharts";
+import moment from "moment";
+import Button from "../buttons/Button";
+import { IForecastDaily } from "../interfaces/Forecast";
+import {
+    useWeather,
+    useWeather2,
+    useForecast,
+    useForecast2,
+} from "../context/DataContext";
 
 const Chart = () => {
     const { forecast2 } = useForecast2();
-    const forecast = useForecast();
-    const weather = useWeather();
+    const { forecast } = useForecast();
+    const { weather } = useWeather();
     const { weather2 } = useWeather2();
     const [grafActive, setGrafActive] = useState<boolean>(true);
     const [grafActive2, setGrafActive2] = useState<boolean>(true);
@@ -28,17 +30,17 @@ const Chart = () => {
     let data: any = [];
     let data2: any = [];
 
-    if (forecast !== null) {
-        forecast.daily.forEach((element: any) => {
+    if (forecast !== undefined) {
+        forecast.daily.forEach((element: IForecastDaily) => {
             data.push({
-                Date: moment(element.dt * 1000).format('L'),
+                Date: moment(element.dt * 1000).format("L"),
                 Hlavní_Město: element.temp.day,
             });
         });
     }
 
-    if (forecast2 !== null) {
-        forecast2.daily.forEach((element: any) => {
+    if (forecast2 !== undefined) {
+        forecast2.daily.forEach((element: IForecastDaily) => {
             data2.push({ Srovnávané_Město: element.temp.day });
         });
     }
@@ -52,11 +54,6 @@ const Chart = () => {
             setGrafActive(false);
         } else {
             setGrafActive(true);
-        }
-        if (grafActive2 === true) {
-            setGrafActive2(false);
-        } else {
-            setGrafActive2(true);
         }
     };
 
@@ -79,7 +76,7 @@ const Chart = () => {
                     <div onClick={() => onSet()}>
                         <Button name={weather?.name} />
                     </div>
-                    <div onClick={() => onSet()}>
+                    <div onClick={() => onSet2()}>
                         <Button name={weather2?.name} />
                     </div>
                 </div>
@@ -104,13 +101,13 @@ const Chart = () => {
                         <Legend />
                         <Line
                             type="monotone"
-                            dataKey={grafActive ? 'Hlavní_Město' : ''}
+                            dataKey={grafActive ? "Hlavní_Město" : ""}
                             stroke="#8884d8"
                             activeDot={{ r: 8 }}
                         />
                         <Line
                             type="monotone"
-                            dataKey={grafActive2 ? 'Srovnávané_Město' : ''}
+                            dataKey={grafActive2 ? "Srovnávané_Město" : ""}
                             stroke="#82ca9d"
                         />
                     </LineChart>

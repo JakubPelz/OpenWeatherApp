@@ -1,16 +1,16 @@
 import React from "react";
-import { useForecast } from "../context/ForecastContext";
+import { useForecast } from "../context/DataContext";
 import { IForecastDaily } from "../interfaces/Forecast";
 import "./widgetForecast.scss";
 import DayToCz from "../dayToCz/DayToCz";
 
 const WidgetForecast = () => {
-    const forecast = useForecast();
+    const { forecast } = useForecast();
 
     return (
         <>
-            {forecast === null ? (
-                "Spojeni"
+            {forecast === undefined ? (
+                "Connection Error"
             ) : (
                 <div className="widgets">
                     {forecast.daily.map((daily: IForecastDaily, i: number) => {

@@ -3,9 +3,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import LanguageIcon from "@mui/icons-material/Language";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
-import { useWeather2 } from "../context/WeatherContext2";
+import { useWeather2, useForecast2 } from "../context/DataContext";
 import ApiClient from "../../api/ApiClient";
-import { useForecast2 } from "../context/ForecastContext2";
 
 const Search = ({ CitiesData }: any) => {
     const [allCities, setAllCities] = useState<any>();
@@ -17,7 +16,7 @@ const Search = ({ CitiesData }: any) => {
 
     useEffect(() => {
         setAllCities(CitiesData);
-    });
+    }, [CitiesData]);
 
     useEffect(() => {
         ApiClient.getWeather(`${findCity}`)
@@ -25,10 +24,10 @@ const Search = ({ CitiesData }: any) => {
                 setWeather2(data);
             })
             .catch((error) => console.log(error));
-    }, [findCity]);
+    }, [findCity, setWeather2]);
 
-    let longtitude = weather2 === null ? 14.42 : weather2.coord.lon;
-    let latitude = weather2 === null ? 50.08 : weather2.coord.lat;
+    let longtitude = weather2 === undefined ? 14.42 : weather2?.coord.lon;
+    let latitude = weather2 === undefined ? 50.08 : weather2?.coord.lat;
 
     const fetchData = useCallback(() => {
         ApiClient.getForecast(latitude, longtitude)
@@ -36,7 +35,7 @@ const Search = ({ CitiesData }: any) => {
                 setForecast2(data);
             })
             .catch((error) => console.log(error));
-    }, [latitude, longtitude]);
+    }, [latitude, longtitude, setForecast2]);
 
     useEffect(() => {
         fetchData();
@@ -45,7 +44,7 @@ const Search = ({ CitiesData }: any) => {
     const handleFilter = (event: any) => {
         const searchValue = event.target.value;
         setSearchCity(searchValue);
-        const newFilter = allCities.filter((value: any) => {
+        const newFilter = allCities?.filter((value: any) => {
             return value.name.toLowerCase().includes(searchCity.toLowerCase());
         });
         if (newFilter === "") {
@@ -98,7 +97,7 @@ const Search = ({ CitiesData }: any) => {
                     <div className="dataResult">
                         {filtredData
                             .slice(0, 15)
-                            .map((value: any, key: any) => {
+                            .map((value: any, key: number) => {
                                 return (
                                     <p
                                         className="dataItem"

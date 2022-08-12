@@ -4,18 +4,6 @@ import { useCityContext } from "../context/CityContext";
 import "./search.scss";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
-export interface ICity {
-    id: number;
-    name: string;
-    state: string;
-    country: string;
-    coord: { lon: number; lat: number };
-}
-
-export interface ICitiesData {
-    CitiesData: ICity[];
-}
-
 const Search = ({ CitiesData }: any) => {
     const [allCities, setAllCities] = useState<any>();
     const [filtredData, setFiltredData] = useState<any>();

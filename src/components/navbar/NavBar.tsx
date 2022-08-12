@@ -4,15 +4,14 @@ import LanguageIcon from "@mui/icons-material/Language";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 import PinDropIcon from "@mui/icons-material/PinDrop";
-
-import { useWeather } from "../context/WeatherContext";
+import { useWeather } from "../context/DataContext";
 import Geolocation from "../geolocation/Geolocation";
 import Search from "../search/Search";
 import moment from "moment";
 import CitiesData from "../../utils/city.list.json";
 
 const NavBar = () => {
-    const weather = useWeather();
+    const { weather } = useWeather();
     return (
         <div className="navbar">
             <div className="wrapper">

@@ -1,13 +1,12 @@
 import { createContext, useContext } from "react";
 
-export type CityContext = {
+export type TypeCityContext = {
     city: string;
-    setCity: (c: string) => void;
+    setCity: (d: string) => void;
 };
 
-export const getCityContext = createContext<CityContext>({
-    city: "Olomouc",
-    setCity: () => {},
-});
+export const getCityContext = createContext<TypeCityContext>(
+    {} as TypeCityContext
+);
 
 export const useCityContext = () => useContext(getCityContext);
