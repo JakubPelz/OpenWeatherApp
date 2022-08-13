@@ -8,6 +8,7 @@ Funkčnosti:
  - aplikcae umí porovnat 2 rozdílná města
  - vyhledávání měst je s našeptávačem
  - zobrazení hodnot v grafu
+ - aplikace umí měnit pozadí
 
 
 Technická stránka:
