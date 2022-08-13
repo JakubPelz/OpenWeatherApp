@@ -5,6 +5,7 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { useWeather2, useForecast2 } from "../context/DataContext";
 import ApiClient from "../../api/ApiClient";
+import { ICityData } from "../interfaces/CitiesData";
 
 const Search = ({ CitiesData }: any) => {
     const [allCities, setAllCities] = useState<any>();
@@ -97,7 +98,7 @@ const Search = ({ CitiesData }: any) => {
                     <div className="dataResult">
                         {filtredData
                             .slice(0, 15)
-                            .map((value: any, key: number) => {
+                            .map((value: ICityData, key: number) => {
                                 return (
                                     <p
                                         className="dataItem"

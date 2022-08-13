@@ -46,16 +46,3 @@ export const WeatherContext2 = createContext<IWeatherContext2>(
 );
 
 export const useWeather2 = () => useContext(WeatherContext2);
-
-interface IMultiContext {
-    forecast: IForecast | undefined;
-    setForecast: (forecast: IForecast) => void;
-    forecast2: IForecast | undefined;
-    setForecast2: (forecast2: IForecast) => void;
-    weather: IWeather | undefined;
-    setWeather: (weather: IWeather) => void;
-    weather2: IWeather | undefined;
-    setWeather2: (weather2: IWeather) => void;
-}
-
-export const MultiContext = createContext<IMultiContext>({} as IMultiContext);

@@ -3,6 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useCityContext } from "../context/CityContext";
 import "./search.scss";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { ICityData } from "../interfaces/CitiesData";
 
 const Search = ({ CitiesData }: any) => {
     const [allCities, setAllCities] = useState<any>();
@@ -59,19 +60,21 @@ const Search = ({ CitiesData }: any) => {
                 <></>
             ) : (
                 <div className="dataResult">
-                    {filtredData.slice(0, 15).map((value: any, key: any) => {
-                        return (
-                            <p
-                                className="dataItem"
-                                key={key}
-                                onClick={() => {
-                                    onSubmitWhisperer(value.name);
-                                }}
-                            >
-                                {value.name}
-                            </p>
-                        );
-                    })}
+                    {filtredData
+                        .slice(0, 15)
+                        .map((value: ICityData, key: number) => {
+                            return (
+                                <p
+                                    className="dataItem"
+                                    key={key}
+                                    onClick={() => {
+                                        onSubmitWhisperer(value.name);
+                                    }}
+                                >
+                                    {value.name}
+                                </p>
+                            );
+                        })}
                 </div>
             )}
         </div>

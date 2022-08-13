@@ -7,7 +7,6 @@ import {
     WeatherContext2,
     ForecastContext,
     ForecastContext2,
-    MultiContext,
 } from "./components/context/DataContext";
 import routes from "./components/routes/Routes";
 import ApiClient from "./api/ApiClient";
@@ -27,12 +26,6 @@ function App() {
         () => ({
             forecast,
             setForecast,
-            forecast2,
-            setForecast2,
-            weather,
-            setWeather,
-            weather2,
-            setWeather2,
         }),
         [forecast]
     );
@@ -61,33 +54,29 @@ function App() {
     }, [fetchData]);
 
     return (
-        <MultiContext.Provider value={valueForecast}>
-            <getDarkModeContext.Provider value={{ darkMode, setDarkMode }}>
-                <getCityContext.Provider value={{ city, setCity }}>
-                    <WeatherContext2.Provider value={{ weather2, setWeather2 }}>
-                        <WeatherContext.Provider
-                            value={{ weather, setWeather }}
+        <getDarkModeContext.Provider value={{ darkMode, setDarkMode }}>
+            <getCityContext.Provider value={{ city, setCity }}>
+                <WeatherContext2.Provider value={{ weather2, setWeather2 }}>
+                    <WeatherContext.Provider value={{ weather, setWeather }}>
+                        <ForecastContext2.Provider
+                            value={{ forecast2, setForecast2 }}
                         >
-                            <ForecastContext2.Provider
-                                value={{ forecast2, setForecast2 }}
-                            >
-                                <ForecastContext.Provider value={valueForecast}>
-                                    <Routes>
-                                        {routes.map((route: IRoute, i: any) => (
-                                            <Route
-                                                key={i}
-                                                path={route.path}
-                                                element={<route.component />}
-                                            ></Route>
-                                        ))}
-                                    </Routes>
-                                </ForecastContext.Provider>
-                            </ForecastContext2.Provider>
-                        </WeatherContext.Provider>
-                    </WeatherContext2.Provider>
-                </getCityContext.Provider>
-            </getDarkModeContext.Provider>
-        </MultiContext.Provider>
+                            <ForecastContext.Provider value={valueForecast}>
+                                <Routes>
+                                    {routes.map((route: IRoute, i: any) => (
+                                        <Route
+                                            key={i}
+                                            path={route.path}
+                                            element={<route.component />}
+                                        ></Route>
+                                    ))}
+                                </Routes>
+                            </ForecastContext.Provider>
+                        </ForecastContext2.Provider>
+                    </WeatherContext.Provider>
+                </WeatherContext2.Provider>
+            </getCityContext.Provider>
+        </getDarkModeContext.Provider>
     );
 }
 
