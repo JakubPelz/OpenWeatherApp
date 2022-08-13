@@ -1,5 +1,5 @@
 import "./navbar.scss";
-import React, { useState } from "react";
+import React from "react";
 import LanguageIcon from "@mui/icons-material/Language";
 import QueryBuilderIcon from "@mui/icons-material/QueryBuilder";
 import MyLocationIcon from "@mui/icons-material/MyLocation";

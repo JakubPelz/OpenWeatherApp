@@ -20,7 +20,7 @@ const Geolocation = ({ CitiesData }: any) => {
 
     useEffect(() => {
         setAllCities(CitiesData);
-    });
+    }, [allCities]);
 
     const functionFindLocation = () => {
         window.navigator.geolocation.getCurrentPosition((position) =>
