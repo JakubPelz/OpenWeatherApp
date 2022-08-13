@@ -3,6 +3,7 @@ import { useForecast } from "../context/DataContext";
 import { IForecastDaily } from "../interfaces/Forecast";
 import "./widgetForecast.scss";
 import DayToCz from "../dayToCz/DayToCz";
+import Spinner from "../spinner/Spinner";
 
 const WidgetForecast = () => {
     const { forecast } = useForecast();
@@ -10,7 +11,7 @@ const WidgetForecast = () => {
     return (
         <>
             {forecast === undefined ? (
-                "Connection Error"
+                <Spinner />
             ) : (
                 <div className="widgets">
                     {forecast.daily.map((daily: IForecastDaily, i: number) => {

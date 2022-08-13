@@ -10,6 +10,7 @@ import {
 import DayToCz from "../dayToCz/DayToCz";
 import moment from "moment";
 import { IForecastDaily } from "../interfaces/Forecast";
+import Spinner from "../spinner/Spinner";
 
 const TableData = () => {
     const { weather } = useWeather();
@@ -46,7 +47,7 @@ const TableData = () => {
                 </thead>
 
                 {forecast === undefined || forecast2 === undefined ? (
-                    ""
+                    <Spinner />
                 ) : (
                     <tbody>
                         <Lines

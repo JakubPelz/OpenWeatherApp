@@ -2,13 +2,14 @@ import "./featureChart.scss";
 import React from "react";
 import { useForecast } from "../context/DataContext";
 import DayToCz from "../dayToCz/DayToCz";
+import Spinner from "../spinner/Spinner";
 
 const FeaturedChart = () => {
     const { forecast } = useForecast();
     return (
         <div className="featured">
             {forecast === undefined ? (
-                <div></div>
+                <Spinner />
             ) : (
                 <>
                     {" "}
