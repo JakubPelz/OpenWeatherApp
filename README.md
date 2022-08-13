@@ -9,7 +9,7 @@ Funkčnosti:
  - vyhledávání měst je s našeptávačem
  - zobrazení hodnot v grafu
  - aplikace umí měnit pozadí
-
+ - je zde moznost geolokace
 
 Technická stránka:
 
@@ -19,4 +19,5 @@ Aplikace je vytvořená v Reactu s použítím TypeScriptu
   - routing je podle lazy routingu tak aby se dle potřeby mohli přidávat další pages jako objekt
   - je zde api client kde se nastavují peths na různé endpointy, paths jsou uložený samostatně
     v pathHelperu aby se cesty upravovali z jednoho místa
+  - stylesheet je pomocí scss
 
